@@ -5,6 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import pl.daniel.herbsmoking.effect.ModEffects;
 
 public enum HerbType {
     INDICA(
@@ -13,10 +14,10 @@ public enum HerbType {
         "Indica",
         "Relaksująca, usypiająca",
         List.of(
-            new EffectEntry(ModEffects.RELAXATION, 600, 1),
-            new EffectEntry(ModEffects.LEVITATION_HERB, 60, 0),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB, 300, 0),
-            new EffectEntry(ModEffects.MUNCHIES, 900, 1)
+            new EffectEntry(ModEffects.RELAXATION.get(), 600, 1),
+            new EffectEntry(ModEffects.LEVITATION_HERB.get(), 60, 0),
+            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 300, 0),
+            new EffectEntry(ModEffects.MUNCHIES.get(), 900, 1)
         )
     ),
     SATIVA(
@@ -25,10 +26,10 @@ public enum HerbType {
         "Sativa",
         "Energetyczna, kreatywna",
         List.of(
-            new EffectEntry(ModEffects.SPEED_HERB, 300, 1),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB, 180, 0),
-            new EffectEntry(ModEffects.RELAXATION, 120, 0),
-            new EffectEntry(ModEffects.LEVITATION_HERB, 20, 1)
+            new EffectEntry(ModEffects.SPEED_HERB.get(), 300, 1),
+            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 180, 0),
+            new EffectEntry(ModEffects.RELAXATION.get(), 120, 0),
+            new EffectEntry(ModEffects.LEVITATION_HERB.get(), 20, 1)
         )
     ),
     CBD(
@@ -37,9 +38,9 @@ public enum HerbType {
         "CBD",
         "Medycyna, bez psychoaktywności",
         List.of(
-            new EffectEntry(ModEffects.RELAXATION, 1200, 0),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB, 600, 0),
-            new EffectEntry(ModEffects.SPEED_HERB, 60, 0)
+            new EffectEntry(ModEffects.RELAXATION.get(), 1200, 0),
+            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 600, 0),
+            new EffectEntry(ModEffects.SPEED_HERB.get(), 60, 0)
         )
     );
 

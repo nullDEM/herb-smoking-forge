@@ -1,7 +1,6 @@
 package pl.daniel.herbsmoking.block;
 
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -12,8 +11,9 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import pl.daniel.herbsmoking.herb.HerbType;
+import pl.daniel.herbsmoking.HerbSmokingMod;
 import pl.daniel.herbsmoking.item.ModItems;
+import pl.daniel.herbsmoking.herb.HerbType;
 import java.util.EnumMap;
 import java.util.Map;
 

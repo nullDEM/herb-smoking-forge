@@ -2,6 +2,7 @@ package pl.daniel.herbsmoking.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -21,8 +22,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.Nullable;
 import pl.daniel.herbsmoking.herb.HerbType;
+import pl.daniel.herbsmoking.item.HerbJointItem;
+import java.util.Random;
 
 public class BongBlock extends BaseEntityBlock {
     public static final BooleanProperty HAS_WATER = BooleanProperty.create("has_water");
@@ -43,13 +45,11 @@ public class BongBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BongBlockEntity(pos, state);
     }
 
-    @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         return level.isClientSide ? null : (lvl, pos, st, be) -> ((BongBlockEntity) be).tick();
@@ -72,6 +72,7 @@ class BongBlockEntity extends BlockEntity implements net.minecraft.world.Contain
     private int smokeTime = 0;
     private int maxSmokeTime = 0;
     private HerbType currentHerb = null;
+    private final Random random = new Random();
 
     public BongBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.BONG_ENTITY.get(), pos, state);
@@ -114,8 +115,7 @@ class BongBlockEntity extends BlockEntity implements net.minecraft.world.Contain
     }
 
     private void finishSmoking() {
-        if (currentHerb != null && level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-            var random = serverLevel.random;
+        if (currentHerb != null && level instanceof ServerLevel serverLevel) {
             var effect = currentHerb.getRandomEffect(random);
             for (Player player : level.players()) {
                 if (player.distanceToSqr(worldPosition.getX(), worldPosition.getY(), worldPosition.getZ()) < 16) {
@@ -124,7 +124,7 @@ class BongBlockEntity extends BlockEntity implements net.minecraft.world.Contain
             }
 
             level.playSound(null, worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(),
-                net.minecraft.sound.SoundEvents.BREWING_STAND_BREW, net.minecraft.sound.SoundSource.BLOCKS, 0.5f, 1.2f);
+                net.minecraft.sounds.SoundEvents.BREWING_STAND_BREW, net.minecraft.sounds.SoundSource.BLOCKS, 0.5f, 1.2f);
         }
 
         slots.set(0, ItemStack.EMPTY);

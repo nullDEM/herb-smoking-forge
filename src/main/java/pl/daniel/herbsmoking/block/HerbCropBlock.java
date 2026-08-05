@@ -48,7 +48,7 @@ public class HerbCropBlock extends CropBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPES[state.getValue(AGE)];
     }
 
@@ -59,11 +59,11 @@ public class HerbCropBlock extends CropBlock {
 
     @Override
     protected Item getBaseSeedId() {
-        return ModBlocks.SEEDS.get(type);
+        return ModBlocks.SEEDS.get(type).get();
     }
 
     @Override
-    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getRawBrightness(pos.above(), 0) >= 9) {
             int age = state.getValue(AGE);
             if (age < getMaxAge() && random.nextInt(5) == 0) {
@@ -77,7 +77,6 @@ public class HerbCropBlock extends CropBlock {
         builder.add(AGE);
     }
 
-    @Override
     public HerbType getType() {
         return type;
     }

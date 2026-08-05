@@ -1,0 +1,6 @@
+{
+  "parent": "herbsmoking:block/bong",
+  "textures": {
+    "water": "herbsmoking:block/bong_water_full"
+  }
+}

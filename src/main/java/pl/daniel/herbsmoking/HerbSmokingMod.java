@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import pl.daniel.herbsmoking.block.ModBlocks;
 import pl.daniel.herbsmoking.item.ModItems;
 import pl.daniel.herbsmoking.effect.ModEffects;
-import pl.daniel.herbsmoking.herb.HerbRegistry;
-import pl.daniel.herbsmoking.worldgen.ModWorldGen;
 
 @Mod(HerbSmokingMod.MOD_ID)
 public class HerbSmokingMod {
@@ -23,8 +21,6 @@ public class HerbSmokingMod {
         ModEffects.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-        HerbRegistry.registerAll();
-        ModWorldGen.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -32,6 +28,6 @@ public class HerbSmokingMod {
     }
 
     public static net.minecraft.resources.ResourceLocation id(String path) {
-        return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+        return net.minecraft.resources.ResourceLocation.tryBuild(MOD_ID, path);
     }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "herbsmoking:rolling_paper" },
+    { "item": "herbsmoking:dried_herb_sativa" }
+  ],
+  "result": { "item": "herbsmoking:herb_joint_sativa", "count": 1 }
+}

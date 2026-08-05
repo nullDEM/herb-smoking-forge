@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Mod-Name: Herb Smoking Mod
+Mod-ID: herbsmoking
+Mod-Version: 1.0.0
+Mod-Author: Daniel
+Mod-Description: Trzy odmiany ziół, sadzonki, bongo, fajki - wersja Fo
+ rge 1.20.1
+

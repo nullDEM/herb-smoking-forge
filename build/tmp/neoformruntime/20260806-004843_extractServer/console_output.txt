@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - /opt/homebrew/Cellar/openjdk@17/17.0.20/libexec/openjdk.jdk/Contents/Home/bin/java
+ - -jar
+ - /Users/dem/.gradle/caches/neoformruntime/artifacts/net/minecraftforge/installertools/1.3.2/installertools-1.3.2-fatjar.jar
+ - --task
+ - bundler_extract
+ - --input
+ - /Users/dem/.gradle/caches/neoformruntime/artifacts/minecraft_1.20.1_server.jar
+ - --output
+ - ./output.jar
+ - --jar-only
+--------------------------------------------------------------------------------
+
+Task: BUNDLER_EXTRACT
+Input:   /Users/dem/.gradle/caches/neoformruntime/artifacts/minecraft_1.20.1_server.jar
+Output:  /Users/dem/Desktop/CloudCode/Brain/herb-smoking-forge/build/tmp/neoformruntime/20260806-004843_extractServer/./output.jar
+All:     false
+JarOnly: true
+Libs:    false
+Extracted: versions/1.20.1/server-1.20.1.jar

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "herbsmoking:block/herb_crop_sativa_stage6"
+  }
+}
