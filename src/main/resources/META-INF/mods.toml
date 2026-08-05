@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+issueTrackerURL="https://github.com/daniel/herb-smoking/issues"
+[[mods]]
+modId="herbsmoking"
+version="${file.jarVersion}"
+displayName="Herb Smoking Mod"
+authors="Daniel"
+description='''
+Trzy odmiany ziół (Indica, Sativa, CBD), sadzonki, bongo (fajka wodna), fajki, papierosy do skręcania.
+Wersja Forge 1.20.1.
+'''
+displayURL="https://github.com/daniel/herb-smoking"
+credits="Daniel - event promo, web dev, Meta Ads"
+logoFile="assets/herbsmoking/icon.png"
+[[dependencies.herbsmoking]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"

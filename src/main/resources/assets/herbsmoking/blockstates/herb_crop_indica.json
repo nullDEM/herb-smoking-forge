@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "age=0": { "model": "herbsmoking:block/herb_crop_indica_stage0" },
+    "age=1": { "model": "herbsmoking:block/herb_crop_indica_stage1" },
+    "age=2": { "model": "herbsmoking:block/herb_crop_indica_stage2" },
+    "age=3": { "model": "herbsmoking:block/herb_crop_indica_stage3" },
+    "age=4": { "model": "herbsmoking:block/herb_crop_indica_stage4" },
+    "age=5": { "model": "herbsmoking:block/herb_crop_indica_stage5" },
+    "age=6": { "model": "herbsmoking:block/herb_crop_indica_stage6" },
+    "age=7": { "model": "herbsmoking:block/herb_crop_indica_stage7" }
+  }
+}

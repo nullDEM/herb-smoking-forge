@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "has_water=false,is_lit=false": { "model": "herbsmoking:block/bong" },
+    "has_water=true,is_lit=false": { "model": "herbsmoking:block/bong_water" },
+    "has_water=false,is_lit=true": { "model": "herbsmoking:block/bong_lit" },
+    "has_water=true,is_lit=true": { "model": "herbsmoking:block/bong_water_lit" }
+  }
+}

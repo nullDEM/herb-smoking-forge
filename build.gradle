@@ -1,0 +1,52 @@
+plugins {
+    id "net.minecraftforge.gradle" version "6.2.0"
+    id "java"
+}
+
+group = "pl.daniel.herbsmoking"
+version = "1.0.0"
+archivesBaseName = "herb-smoking"
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: "official", version: "1.20.1"
+    runs {
+        client {
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+        }
+        server {
+            workingDirectory project.file("run")
+            property "forge.logging.markers", "REGISTRIES"
+            property "forge.logging.console.level", "debug"
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:1.20.1-47.2.0"
+    implementation "net.minecraftforge:forge:1.20.1-47.2.0"
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://maven.minecraftforge.net" }
+}
+
+jar {
+    manifest.attributes(
+        "Mod-Name": "Herb Smoking Mod",
+        "Mod-ID": "herbsmoking",
+        "Mod-Version": project.version,
+        "Mod-Author": "Daniel",
+        "Mod-Description": "Trzy odmiany ziół, sadzonki, bongo, fajki - wersja Forge 1.20.1"
+    )
+}
+
+tasks.named("build") {
+    finalizedBy "reobfJar"
+}

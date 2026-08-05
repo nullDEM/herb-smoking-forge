@@ -1,0 +1,6 @@
+{
+  "parent": "herbsmoking:block/bong",
+  "textures": {
+    "body": "herbsmoking:block/bong_body_lit"
+  }
+}
