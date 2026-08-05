@@ -1,11 +1,12 @@
 package pl.daniel.herbsmoking.herb;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import pl.daniel.herbsmoking.effect.ModEffects;
 
 public enum HerbType {
     INDICA(
@@ -14,10 +15,10 @@ public enum HerbType {
         "Indica",
         "Relaksująca, usypiająca",
         List.of(
-            new EffectEntry(ModEffects.RELAXATION.get(), 600, 1),
-            new EffectEntry(ModEffects.LEVITATION_HERB.get(), 60, 0),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 300, 0),
-            new EffectEntry(ModEffects.MUNCHIES.get(), 900, 1)
+            new EffectEntry("herbsmoking:relaxation", 600, 1),
+            new EffectEntry("herbsmoking:levitation_herb", 60, 0),
+            new EffectEntry("herbsmoking:night_vision_herb", 300, 0),
+            new EffectEntry("herbsmoking:munchies", 900, 1)
         )
     ),
     SATIVA(
@@ -26,10 +27,10 @@ public enum HerbType {
         "Sativa",
         "Energetyczna, kreatywna",
         List.of(
-            new EffectEntry(ModEffects.SPEED_HERB.get(), 300, 1),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 180, 0),
-            new EffectEntry(ModEffects.RELAXATION.get(), 120, 0),
-            new EffectEntry(ModEffects.LEVITATION_HERB.get(), 20, 1)
+            new EffectEntry("herbsmoking:speed_herb", 300, 1),
+            new EffectEntry("herbsmoking:night_vision_herb", 180, 0),
+            new EffectEntry("herbsmoking:relaxation", 120, 0),
+            new EffectEntry("herbsmoking:levitation_herb", 20, 1)
         )
     ),
     CBD(
@@ -38,9 +39,9 @@ public enum HerbType {
         "CBD",
         "Medycyna, bez psychoaktywności",
         List.of(
-            new EffectEntry(ModEffects.RELAXATION.get(), 1200, 0),
-            new EffectEntry(ModEffects.NIGHT_VISION_HERB.get(), 600, 0),
-            new EffectEntry(ModEffects.SPEED_HERB.get(), 60, 0)
+            new EffectEntry("herbsmoking:relaxation", 1200, 0),
+            new EffectEntry("herbsmoking:night_vision_herb", 600, 0),
+            new EffectEntry("herbsmoking:speed_herb", 60, 0)
         )
     );
 
@@ -64,10 +65,14 @@ public enum HerbType {
 
     public MobEffectInstance getRandomEffect(Random random) {
         EffectEntry entry = effectPool.get(random.nextInt(effectPool.size()));
-        return new MobEffectInstance(entry.effect, entry.durationSeconds * 20, entry.amplifier);
+        MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(entry.effectId()));
+        if (effect != null) {
+            return new MobEffectInstance(effect, entry.durationSeconds * 20, entry.amplifier);
+        }
+        return null;
     }
 
-    public record EffectEntry(MobEffect effect, int durationSeconds, int amplifier) {}
+    public record EffectEntry(String effectId, int durationSeconds, int amplifier) {}
 
     public String itemSuffix() { return "_" + id; }
     public String blockId() { return "herb_crop_" + id; }
